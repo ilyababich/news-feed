@@ -40,6 +40,7 @@ describe("Resource", () => {
 
     expect(result.length).toBe(3);
 
+    // eslint-disable-next-line array-callback-return
     result.map(({ id }, i) => {
       expect(id).toBe(i);
     });

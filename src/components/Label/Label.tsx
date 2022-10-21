@@ -4,9 +4,9 @@ import { ESize } from "./consts";
 import styles from "./Label.module.css";
 
 type TLabel = {
-  isLoading: boolean;
   text: JSX.Element;
-  skeletonSize: ESize;
+  isLoading?: boolean;
+  skeletonSize?: ESize;
 };
 
 const sizesMap = {
@@ -15,11 +15,14 @@ const sizesMap = {
 };
 
 const Label = (props: TLabel) => {
-  const { isLoading, text, skeletonSize } = props;
+  const { text, isLoading = false, skeletonSize = ESize.S } = props;
 
   if (isLoading) {
     return (
-      <div className={classnames(styles.loader, sizesMap[skeletonSize])} />
+      <div
+        data-testid="label-skeleton"
+        className={classnames(styles.loader, sizesMap[skeletonSize])}
+      />
     );
   }
 
