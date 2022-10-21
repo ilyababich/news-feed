@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BundleResource } from "../../api/services/resources";
+import { bundleResource } from "../../api/services/resources";
 
 import PageTemplate from "../../components/pageTemplate";
 
@@ -18,7 +18,7 @@ const Main = () => {
   useEffect(() => {
     const getBundleDescriptionAsync = async () => {
       const bundleDescriptionResponse =
-        await BundleResource.getBundleDescription();
+        await bundleResource.getBundleDescription();
       setBundleDescription(bundleDescriptionResponse);
     };
 

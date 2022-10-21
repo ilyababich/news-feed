@@ -1,4 +1,4 @@
-import Label, { ESize } from "../../../../components/Label";
+import Label, { ESize } from "../../../../components/label";
 
 import styles from "./BundleDescription.module.css";
 

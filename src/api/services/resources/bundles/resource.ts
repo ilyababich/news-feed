@@ -1,9 +1,9 @@
-import mock from "./mock.json";
+import apiResponse from "./bundle-api.json";
 
 import { TBundleResponse } from "./types";
 
 class BundleResource {
-  private bundleResponse: TBundleResponse = mock;
+  private bundleResponse: TBundleResponse = apiResponse;
 
   private async promisifyResponse<T>(response: T): Promise<T> {
     return new Promise((resolve) => setTimeout(() => resolve(response), 1000));

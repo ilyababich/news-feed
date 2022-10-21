@@ -1,1 +1,1 @@
-export { default as BundleResource } from "./bundles";
+export { default as bundleResource } from "./bundles";
