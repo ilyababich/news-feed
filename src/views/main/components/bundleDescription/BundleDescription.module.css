@@ -1,0 +1,18 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.label {
+    color: orange;
+    font-weight: 800;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+}
+
+.title {
+    font-weight: 800;
+}
