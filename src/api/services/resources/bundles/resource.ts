@@ -20,6 +20,19 @@ class BundleResource {
       label: this.bundleResponse.label,
     });
   }
+
+  public async getBundleItemsRange(startIndex: number, endIndex: number) {
+    const selectedRange = this.bundleResponse.bundelItems.slice(
+      startIndex,
+      endIndex + 1
+    );
+
+    return this.promisifyResponse(selectedRange);
+  }
+
+  public async getBundleItemsLength() {
+    return this.promisifyResponse(this.bundleResponse.bundelItems.length);
+  }
 }
 
 export default new BundleResource();
