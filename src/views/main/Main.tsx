@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { bundleResource } from "../../api/services/resources";
+import { TBundleItem } from "../../api/services/resources/bundles/types";
 
 import PageTemplate from "../../components/pageTemplate";
 
 import BundleDescription, {
   TBundleDescription,
 } from "./components/bundleDescription";
+import BundleItems from "./components/bundleItems";
 
 const Main = () => {
   const [bundleDescription, setBundleDescription] =
@@ -15,11 +17,20 @@ const Main = () => {
       label: null,
     });
 
+  const [bundleItems, setBundleItems] = useState<TBundleItem[]>([]);
+
   useEffect(() => {
     const getBundleDescriptionAsync = async () => {
       const bundleDescriptionResponse =
         await bundleResource.getBundleDescription();
       setBundleDescription(bundleDescriptionResponse);
+
+      const bundleItemsResponse = await bundleResource.getBundleItemsRange(
+        0,
+        10
+      );
+
+      setBundleItems(bundleItemsResponse);
     };
 
     getBundleDescriptionAsync();
@@ -27,7 +38,10 @@ const Main = () => {
 
   return (
     <PageTemplate>
-      <BundleDescription {...bundleDescription} />
+      <>
+        <BundleDescription {...bundleDescription} />
+        <BundleItems bundleItems={bundleItems} />
+      </>
     </PageTemplate>
   );
 };

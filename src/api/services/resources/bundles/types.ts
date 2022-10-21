@@ -1,4 +1,4 @@
-type TBundleItem = {
+export type TBundleItem = {
   id: number;
   titel: string;
   urlAlias: string;
