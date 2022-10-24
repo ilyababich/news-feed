@@ -18,7 +18,7 @@ const Main = () => {
       label: null,
     });
 
-  const { items, containerRef } = useInfinityScrolling(10);
+  const { items, containerRef, isLoading } = useInfinityScrolling(10);
 
   useEffect(() => {
     const getBundleDescriptionAsync = async () => {
@@ -35,6 +35,7 @@ const Main = () => {
       <>
         <BundleDescription {...bundleDescription} />
         <BundleItems bundleItems={items} />
+        {isLoading && <div>IS LOADING...</div>}
         <div ref={containerRef} />
       </>
     </PageTemplate>

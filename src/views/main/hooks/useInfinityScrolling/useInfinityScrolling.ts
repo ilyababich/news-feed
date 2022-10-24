@@ -16,6 +16,7 @@ const useInfinityScrolling = (numberOfItems: number) => {
 
   const [items, setItems] = useState<TBundleItem[]>([]);
   const [shouldLoadItems, setShouldLoadItems] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const callbackFunction: IntersectionObserverCallback = (entries) => {
     const [entry] = entries;
@@ -49,7 +50,7 @@ const useInfinityScrolling = (numberOfItems: number) => {
   useEffect(() => {
     const asyncRequest = async () => {
       const itemsLength = await bundleResource.getBundleItemsLength();
-      console.log(itemsLength);
+
       totalNumberRef.current = itemsLength;
     };
 
@@ -58,12 +59,14 @@ const useInfinityScrolling = (numberOfItems: number) => {
 
   useEffect(() => {
     const asyncRequest = async () => {
+      setIsLoading(true);
       const requestedItems = await bundleResource.getBundleItemsRange(
         items.length,
         items.length + numberOfItems
       );
       setItems((currentItems) => currentItems.concat(requestedItems));
       setShouldLoadItems(false);
+      setIsLoading(false);
     };
 
     if (!isUpdatedRef.current || shouldLoadItems) {
@@ -77,6 +80,7 @@ const useInfinityScrolling = (numberOfItems: number) => {
   return {
     containerRef,
     items,
+    isLoading,
   };
 };
 
