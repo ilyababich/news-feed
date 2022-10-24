@@ -89,7 +89,7 @@ describe("Resource", () => {
   });
 
   it("returns selected items from bundle", async () => {
-    const result = await bundleResource.getBundleItemsRange(2, 4);
+    const result = await bundleResource.getBundleItemsRange(2, 5);
 
     const expectedArray = [
       {

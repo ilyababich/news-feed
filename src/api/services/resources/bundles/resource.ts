@@ -29,7 +29,7 @@ class BundleResource {
   ): Promise<TBundleItem[]> {
     const range = await this.getBundleItems();
 
-    return mapBundleItems(range.slice(startIndex, endIndex + 1));
+    return mapBundleItems(range.slice(startIndex, endIndex));
   }
 
   public async getBundleItemsLength() {
