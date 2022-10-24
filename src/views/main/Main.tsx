@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { bundleResource } from "../../api/services/resources";
-import { TBundleItem } from "../../api/services/resources/bundles/types";
 
 import PageTemplate from "../../components/pageTemplate";
+import { TBundleItem } from "../../types";
 
 import BundleDescription, {
   TBundleDescription,

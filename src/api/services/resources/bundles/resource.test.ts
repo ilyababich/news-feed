@@ -11,36 +11,54 @@ jest.mock("./bundle-api.json", () => ({
       titel: "Title 0",
       urlAlias: "some url",
       labelValue: "label 0",
+      afbeelding: {
+        afbeelding: "afbeelding 0",
+      },
     },
     {
       id: 1,
       titel: "Title 1",
       urlAlias: "some url",
       labelValue: "label 1",
+      afbeelding: {
+        afbeelding: "afbeelding 1",
+      },
     },
     {
       id: 2,
       titel: "Title 2",
       urlAlias: "some url",
       labelValue: "label 2",
+      afbeelding: {
+        afbeelding: "afbeelding 2",
+      },
     },
     {
       id: 3,
       titel: "Title 3",
       urlAlias: "some url",
       labelValue: "label 3",
+      afbeelding: {
+        afbeelding: "afbeelding 3",
+      },
     },
     {
       id: 4,
       titel: "Title 4",
       urlAlias: "some url",
       labelValue: "label 4",
+      afbeelding: {
+        afbeelding: "afbeelding 4",
+      },
     },
     {
       id: 5,
       titel: "Title 5",
       urlAlias: "some url",
       labelValue: "label 5",
+      afbeelding: {
+        afbeelding: "afbeelding 5",
+      },
     },
   ],
 }));
@@ -68,14 +86,35 @@ describe("Resource", () => {
     const result = await bundleResource.getBundleItemsRange(2, 4);
 
     const expectedArray = [
-      { id: 2, titel: "Title 2" },
-      { id: 3, titel: "Title 3" },
-      { id: 4, titel: "Title 4" },
+      {
+        id: 2,
+        titel: "Title 2",
+        url: "some url",
+        label: "label 2",
+        imageUrl: "afbeelding 2",
+      },
+      {
+        id: 3,
+        titel: "Title 3",
+        url: "some url",
+        label: "label 3",
+        imageUrl: "afbeelding 3",
+      },
+      {
+        id: 4,
+        titel: "Title 4",
+        url: "some url",
+        label: "label 4",
+        imageUrl: "afbeelding 4",
+      },
     ];
 
     expectedArray.map((item, i) => {
       expect(result[i].id).toEqual(item.id);
-      expect(result[i].titel).toEqual(item.titel);
+      expect(result[i].title).toEqual(item.titel);
+      expect(result[i].url).toEqual(item.url);
+      expect(result[i].label).toEqual(item.label);
+      expect(result[i].imageUrl).toEqual(item.imageUrl);
     });
   });
 

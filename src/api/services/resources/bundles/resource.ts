@@ -1,3 +1,4 @@
+import { TBundleItem } from "../../../../types";
 import apiResponse from "./bundle-api.json";
 
 import { TBundleResponse } from "./types";
@@ -10,7 +11,7 @@ class BundleResource {
   }
 
   public async getBundleItems() {
-    return Promise.resolve(this.bundleResponse.bundelItems);
+    return this.promisifyResponse(this.bundleResponse.bundelItems);
   }
 
   public async getBundleDescription() {
@@ -21,11 +22,19 @@ class BundleResource {
     });
   }
 
-  public async getBundleItemsRange(startIndex: number, endIndex: number) {
-    const selectedRange = this.bundleResponse.bundelItems.slice(
-      startIndex,
-      endIndex + 1
-    );
+  public async getBundleItemsRange(
+    startIndex: number,
+    endIndex: number
+  ): Promise<TBundleItem[]> {
+    const selectedRange = this.bundleResponse.bundelItems
+      .slice(startIndex, endIndex + 1)
+      .map((item) => ({
+        id: item.id,
+        title: item.titel,
+        url: item.urlAlias,
+        label: item.labelValue,
+        imageUrl: item.afbeelding.afbeelding,
+      }));
 
     return this.promisifyResponse(selectedRange);
   }

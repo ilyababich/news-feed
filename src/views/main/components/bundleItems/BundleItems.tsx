@@ -1,5 +1,4 @@
-import { TBundleItem } from "../../../../api/services/resources/bundles/types";
-
+import { TBundleItem } from "../../../../types";
 import BundleItem from "../bundleItem";
 
 type TBundleItems = {
@@ -13,10 +12,10 @@ const BundleItems = (props: TBundleItems) => {
         return (
           <BundleItem
             key={item.id}
-            title={item.titel}
-            label={item.labelValue}
-            link={item.urlAlias}
-            imageUrl=""
+            title={item.title}
+            label={item.label}
+            link={item.url}
+            imageUrl={item.imageUrl}
           />
         );
       })}
