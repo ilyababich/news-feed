@@ -1,6 +1,21 @@
 .layout {
   display: flex;
   flex-direction: column;
-  max-width: 250px;
-  height: auto;
+  margin: 2rem 1rem;
+  max-width: 400px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.label {
+  color: orange;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.title {
+  font-weight: 800;
+  color: black;
 }

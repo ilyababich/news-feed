@@ -27,7 +27,7 @@ const Main = () => {
 
       const bundleItemsResponse = await bundleResource.getBundleItemsRange(
         0,
-        10
+        8
       );
 
       setBundleItems(bundleItemsResponse);

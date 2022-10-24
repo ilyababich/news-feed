@@ -8,13 +8,15 @@ type TBundleItem = {
 };
 
 const BundleItem = (props: TBundleItem) => {
-  const { title, label, imageUrl } = props;
+  const { title, label, imageUrl, link } = props;
 
   return (
     <div className={styles.layout}>
-      <img src={imageUrl} alt="Description..." />
-      <p>{label}</p>
-      <p>{title}</p>
+      <a className={styles.link} href={link}>
+        <img src={imageUrl} alt="Description..." />
+        <p className={styles.label}>{label}</p>
+        <p className={styles.title}>{title}</p>
+      </a>
     </div>
   );
 };

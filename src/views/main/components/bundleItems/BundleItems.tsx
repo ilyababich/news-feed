@@ -1,13 +1,15 @@
 import { TBundleItem } from "../../../../types";
 import BundleItem from "../bundleItem";
 
+import styles from "./BundleItems.module.css";
+
 type TBundleItems = {
   bundleItems: TBundleItem[];
 };
 
 const BundleItems = (props: TBundleItems) => {
   return (
-    <div>
+    <div className={styles.layout}>
       {props.bundleItems.map((item) => {
         return (
           <BundleItem
