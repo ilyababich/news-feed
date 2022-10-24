@@ -19,3 +19,17 @@
   font-weight: 800;
   color: black;
 }
+
+.image {
+  transition: transform 0.5s;
+}
+
+.image:hover {
+  transform: scale(1.2);
+}
+
+.imageWrapper {
+  height: 400px;
+  width: 400px;
+  overflow: hidden;
+}

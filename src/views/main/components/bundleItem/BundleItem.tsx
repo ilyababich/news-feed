@@ -13,7 +13,9 @@ const BundleItem = (props: TBundleItem) => {
   return (
     <div className={styles.layout}>
       <a className={styles.link} href={link}>
-        <img src={imageUrl} alt="Description..." />
+        <div className={styles.imageWrapper}>
+          <img className={styles.image} src={imageUrl} alt="Description..." />
+        </div>
         <p className={styles.label}>{label}</p>
         <p className={styles.title}>{title}</p>
       </a>
