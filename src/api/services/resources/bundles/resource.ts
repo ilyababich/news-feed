@@ -2,6 +2,7 @@ import { TBundleItem } from "../../../../types";
 import apiResponse from "./bundle-api.json";
 
 import { TBundleResponse } from "./types";
+import mapBundleItems from "./utils/mapBundleItems";
 
 class BundleResource {
   private bundleResponse: TBundleResponse = apiResponse;
@@ -26,17 +27,9 @@ class BundleResource {
     startIndex: number,
     endIndex: number
   ): Promise<TBundleItem[]> {
-    const selectedRange = this.bundleResponse.bundelItems
-      .slice(startIndex, endIndex + 1)
-      .map((item) => ({
-        id: item.id,
-        title: item.titel,
-        url: item.urlAlias,
-        label: item.labelValue,
-        imageUrl: item.afbeelding.afbeelding,
-      }));
+    const range = await this.getBundleItems();
 
-    return this.promisifyResponse(selectedRange);
+    return mapBundleItems(range.slice(startIndex, endIndex + 1));
   }
 
   public async getBundleItemsLength() {

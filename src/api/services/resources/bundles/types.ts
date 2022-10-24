@@ -1,8 +1,16 @@
-type TAfbeelding = {
-  afbeelding: string;
+type TAfbeeldingCrop = {
+  type: string;
+  height: number;
+  width: number;
+  path: string;
 };
 
-type TBundleItemResponse = {
+type TAfbeelding = {
+  afbeelding: string;
+  crops: TAfbeeldingCrop[];
+};
+
+export type TBundleItemResponse = {
   id: number;
   titel: string;
   urlAlias: string;

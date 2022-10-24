@@ -13,6 +13,7 @@ jest.mock("./bundle-api.json", () => ({
       labelValue: "label 0",
       afbeelding: {
         afbeelding: "afbeelding 0",
+        crops: [],
       },
     },
     {
@@ -22,6 +23,7 @@ jest.mock("./bundle-api.json", () => ({
       labelValue: "label 1",
       afbeelding: {
         afbeelding: "afbeelding 1",
+        crops: [],
       },
     },
     {
@@ -30,6 +32,7 @@ jest.mock("./bundle-api.json", () => ({
       urlAlias: "some url",
       labelValue: "label 2",
       afbeelding: {
+        crops: [],
         afbeelding: "afbeelding 2",
       },
     },
@@ -39,6 +42,7 @@ jest.mock("./bundle-api.json", () => ({
       urlAlias: "some url",
       labelValue: "label 3",
       afbeelding: {
+        crops: [],
         afbeelding: "afbeelding 3",
       },
     },
@@ -48,6 +52,7 @@ jest.mock("./bundle-api.json", () => ({
       urlAlias: "some url",
       labelValue: "label 4",
       afbeelding: {
+        crops: [],
         afbeelding: "afbeelding 4",
       },
     },
@@ -57,6 +62,7 @@ jest.mock("./bundle-api.json", () => ({
       urlAlias: "some url",
       labelValue: "label 5",
       afbeelding: {
+        crops: [],
         afbeelding: "afbeelding 5",
       },
     },
