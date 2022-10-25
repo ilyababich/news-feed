@@ -7,7 +7,6 @@ import BundleDescription, {
   TBundleDescription,
 } from "./components/bundleDescription";
 import BundleItems from "./components/bundleItems";
-import BundleItemsSkeleton from "./components/bundleItemsSkeleton";
 
 import { ITEMS_COUNT } from "./consts";
 import { useInfinityScrolling } from "./hooks";
@@ -36,8 +35,11 @@ const Main = () => {
     <PageTemplate>
       <>
         <BundleDescription {...bundleDescription} />
-        <BundleItems bundleItems={items} />
-        {isLoading && <BundleItemsSkeleton count={ITEMS_COUNT} />}
+        <BundleItems
+          bundleItems={items}
+          isLoading={isLoading}
+          skeletonsItemsCount={ITEMS_COUNT}
+        />
         <div ref={containerRef} />
       </>
     </PageTemplate>

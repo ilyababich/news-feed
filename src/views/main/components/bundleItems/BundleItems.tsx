@@ -1,16 +1,20 @@
 import { TBundleItem } from "../../../../types";
 import BundleItem from "../bundleItem";
+import BundleItemsSkeleton from "../bundleItemsSkeleton";
 
 import styles from "./BundleItems.module.css";
 
 type TBundleItems = {
   bundleItems: TBundleItem[];
+  isLoading: boolean;
+  skeletonsItemsCount: number;
 };
 
 const BundleItems = (props: TBundleItems) => {
+  const { bundleItems, isLoading, skeletonsItemsCount } = props;
   return (
     <div className={styles.layout}>
-      {props.bundleItems.map((item) => {
+      {bundleItems.map((item) => {
         return (
           <BundleItem
             key={item.id}
@@ -21,6 +25,7 @@ const BundleItems = (props: TBundleItems) => {
           />
         );
       })}
+      {isLoading && <BundleItemsSkeleton count={skeletonsItemsCount} />}
     </div>
   );
 };
