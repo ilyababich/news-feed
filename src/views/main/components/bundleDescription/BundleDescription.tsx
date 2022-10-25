@@ -26,7 +26,7 @@ const BundleDescription = (props: TBundleDescription) => {
       <Label
         isLoading={!description}
         text={<p>{description}</p>}
-        skeletonSize={ESize.M}
+        skeletonSize={ESize.L}
       />
     </div>
   );

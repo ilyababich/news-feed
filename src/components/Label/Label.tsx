@@ -12,6 +12,7 @@ type TLabel = {
 const sizesMap = {
   [ESize.S]: styles.small,
   [ESize.M]: styles.medium,
+  [ESize.L]: styles.large,
 };
 
 const Label = (props: TLabel) => {

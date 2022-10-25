@@ -12,20 +12,16 @@ const options = {
 const useInfinityScrolling = (numberOfItems: number) => {
   const isUpdatedRef = useRef<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const totalNumberRef = useRef<number | null>(null);
 
   const [items, setItems] = useState<TBundleItem[]>([]);
   const [shouldLoadItems, setShouldLoadItems] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [totalItemsCount, setTotalItemsCount] = useState<number | null>(null);
 
   const callbackFunction: IntersectionObserverCallback = (entries) => {
     const [entry] = entries;
 
-    if (
-      entry.isIntersecting &&
-      totalNumberRef.current &&
-      totalNumberRef.current > items.length
-    ) {
+    if (entry.isIntersecting) {
       setShouldLoadItems(true);
     }
   };
@@ -51,7 +47,7 @@ const useInfinityScrolling = (numberOfItems: number) => {
     const asyncRequest = async () => {
       const itemsLength = await bundleResource.getBundleItemsLength();
 
-      totalNumberRef.current = itemsLength;
+      setTotalItemsCount(itemsLength);
     };
 
     asyncRequest();
@@ -69,7 +65,10 @@ const useInfinityScrolling = (numberOfItems: number) => {
       setIsLoading(false);
     };
 
-    if (!isUpdatedRef.current || shouldLoadItems) {
+    if (
+      !isUpdatedRef.current ||
+      (shouldLoadItems && totalItemsCount && items.length < totalItemsCount)
+    ) {
       asyncRequest();
     }
 
