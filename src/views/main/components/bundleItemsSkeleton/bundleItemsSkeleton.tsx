@@ -12,9 +12,9 @@ const BundleItemsSkeleton = (props: TBundleItemsSkeleton) => {
   const { count } = props;
 
   const skeletonArray = useMemo(() => {
-    const array = new Array(count);
+    const array = new Array(count).fill(null);
 
-    return array.fill(<BundleItemSkeleton />);
+    return array.map((item, index) => <BundleItemSkeleton key={index} />);
   }, [count]);
 
   return <div className={styles.layout}>{skeletonArray}</div>;
