@@ -29,7 +29,7 @@ const Main = (props: TMain) => {
           isLoading={isLoading}
           skeletonsItemsCount={ITEMS_COUNT}
         />
-        <div ref={containerRef} />
+        <div ref={containerRef} data-cy="loading" />
       </>
     </PageTemplate>
   );
