@@ -1,1 +1,1 @@
-export { default } from "./bundleItemsSkeleton";
+export { default } from "./BundleItemsSkeleton";

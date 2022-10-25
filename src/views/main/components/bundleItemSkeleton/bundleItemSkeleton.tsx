@@ -1,4 +1,4 @@
-import styles from "./bundleItemSkeleton.module.css";
+import styles from "./BundleItemSkeleton.module.css";
 
 const BundleItemSkeleton = () => {
   return (
