@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react";
-import { bundleResource } from "../../api/services/resources";
-
 import PageTemplate from "../../components/pageTemplate";
 
 import BundleDescription, {
@@ -11,25 +8,17 @@ import BundleItems from "./components/bundleItems";
 import { ITEMS_COUNT } from "./consts";
 import { useInfinityScrolling } from "./hooks";
 
-const Main = () => {
-  const [bundleDescription, setBundleDescription] =
-    useState<TBundleDescription>({
-      title: null,
-      description: null,
-      label: null,
-    });
+type TMain = {
+  bundleDescription: TBundleDescription;
+  bundleItemsCount: number | null;
+};
 
-  const { items, containerRef, isLoading } = useInfinityScrolling(ITEMS_COUNT);
-
-  useEffect(() => {
-    const getBundleDescriptionAsync = async () => {
-      const bundleDescriptionResponse =
-        await bundleResource.getBundleDescription();
-      setBundleDescription(bundleDescriptionResponse);
-    };
-
-    getBundleDescriptionAsync();
-  }, []);
+const Main = (props: TMain) => {
+  const { bundleDescription, bundleItemsCount } = props;
+  const { items, containerRef, isLoading } = useInfinityScrolling(
+    ITEMS_COUNT,
+    bundleItemsCount
+  );
 
   return (
     <PageTemplate>

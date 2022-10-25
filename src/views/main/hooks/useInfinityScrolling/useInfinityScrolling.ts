@@ -9,14 +9,16 @@ const options = {
   threshold: 0,
 };
 
-const useInfinityScrolling = (numberOfItems: number) => {
+const useInfinityScrolling = (
+  numberOfItems: number,
+  totalItemsCount: number | null
+) => {
   const isUpdatedRef = useRef<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [items, setItems] = useState<TBundleItem[]>([]);
   const [shouldLoadItems, setShouldLoadItems] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [totalItemsCount, setTotalItemsCount] = useState<number | null>(null);
 
   const callbackFunction: IntersectionObserverCallback = (entries) => {
     const [entry] = entries;
@@ -42,16 +44,6 @@ const useInfinityScrolling = (numberOfItems: number) => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [containerRef]);
-
-  useEffect(() => {
-    const asyncRequest = async () => {
-      const itemsLength = await bundleResource.getBundleItemsLength();
-
-      setTotalItemsCount(itemsLength);
-    };
-
-    asyncRequest();
-  }, []);
 
   useEffect(() => {
     const asyncRequest = async () => {
