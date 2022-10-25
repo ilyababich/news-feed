@@ -2,8 +2,6 @@ import { useMemo } from "react";
 
 import BundleItemSkeleton from "../bundleItemSkeleton";
 
-import styles from "./bundleItemsSkeleton.module.css";
-
 type TBundleItemsSkeleton = {
   count: number;
 };
@@ -17,7 +15,7 @@ const BundleItemsSkeleton = (props: TBundleItemsSkeleton) => {
     return array.map((item, index) => <BundleItemSkeleton key={index} />);
   }, [count]);
 
-  return <div className={styles.layout}>{skeletonArray}</div>;
+  return <>{skeletonArray}</>;
 };
 
 export default BundleItemsSkeleton;

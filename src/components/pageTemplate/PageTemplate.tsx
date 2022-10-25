@@ -11,7 +11,7 @@ const PageTemplate = (props: TPageTemplate) => {
   return (
     <div className={styles.layout}>
       <Header />
-      <main>{children}</main>
+      <main className={styles.main}>{children}</main>
     </div>
   );
 };

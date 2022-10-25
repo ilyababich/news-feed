@@ -8,7 +8,7 @@ class BundleResource {
   private bundleResponse: TBundleResponse = apiResponse;
 
   private async promisifyResponse<T>(response: T): Promise<T> {
-    return new Promise((resolve) => setTimeout(() => resolve(response), 2000));
+    return new Promise((resolve) => setTimeout(() => resolve(response), 1500));
   }
 
   public async getBundleItems() {

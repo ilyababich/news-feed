@@ -25,7 +25,9 @@ const BundleItems = (props: TBundleItems) => {
           />
         );
       })}
-      {isLoading && <BundleItemsSkeleton count={skeletonsItemsCount} />}
+      {isLoading && (
+        <BundleItemsSkeleton count={Math.floor(skeletonsItemsCount / 2)} />
+      )}
     </div>
   );
 };

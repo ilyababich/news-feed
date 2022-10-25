@@ -6,7 +6,7 @@ import { TBundleItem } from "../../../../types";
 const options = {
   root: null,
   rootMargin: "200px",
-  threshold: 1.0,
+  threshold: 0,
 };
 
 const useInfinityScrolling = (numberOfItems: number) => {
