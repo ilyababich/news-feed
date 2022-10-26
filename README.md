@@ -13,4 +13,25 @@
 ### How to run the project locally
 
 - clone the repository
--
+- install dependencies with `npm i`
+- `npm start`
+
+## Testing
+
+### Unit test (jest + react-testing-library)
+
+- `npm test`
+
+### E2E tests (cypress)
+
+- `npm run cypress:open`
+
+## Deployment
+
+#### Deployment to github pages
+
+- `npm run deploy`
+
+**Contribution**
+
+_Each push into `main` brunch triggers running of lint check, unit and e2e tests, for more information see [actions](https://github.com/ilyababich/news-feed/actions)_
