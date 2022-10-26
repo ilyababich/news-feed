@@ -13,7 +13,7 @@ type TBundleItems = {
 const BundleItems = (props: TBundleItems) => {
   const { bundleItems, isLoading, skeletonsItemsCount } = props;
   return (
-    <div className={styles.layout}>
+    <div className={styles.layout} data-cy="bundle-items">
       {bundleItems.map((item) => {
         return (
           <BundleItem

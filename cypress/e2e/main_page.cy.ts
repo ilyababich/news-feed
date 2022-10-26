@@ -15,13 +15,41 @@ describe("The Main Page", () => {
     );
   });
 
-  it("should render 6 item on initial render", () => {
-    cy.get("main").children().eq(1).children().should("have.length", "6");
+  it("renders 6 item on initial render", () => {
+    cy.get('[data-cy="bundle-items"]').children().should("have.length", "6");
   });
 
-  it("should add additional items when reach bottom", () => {
+  it("adds additional items when reach bottom", () => {
     cy.get('[data-cy="loading"]').scrollIntoView();
     cy.get("main").children().eq(1).children().should("have.length", "12");
+  });
+
+  it("renders the first item correctly", () => {
+    cy.get('[data-cy="bundle-item"]')
+      .eq(0)
+      .find("a")
+      .invoke("attr", "href")
+      .should(
+        "eq",
+        "https://www.rtlboulevard.nl/entertainment/showbizz/artikel/4245471/trijntje-oosterhuis-onherkenbaar-veel-afgevallen"
+      );
+
+    cy.get('[data-cy="bundle-item"]')
+      .eq(0)
+      .find("img")
+      .invoke("attr", "src")
+      .should(
+        "eq",
+        "https://www.rtlboulevard.nl/sites/default/files/styles/square_medium/public/content/images/2018/06/19/ANP-56919532.jpg?itok=TE8J4FE3"
+      );
+
+    cy.get('[data-cy="bundle-item"]')
+      .eq(0)
+      .contains("De uitschieters van 2018");
+
+    cy.get('[data-cy="bundle-item"]')
+      .eq(0)
+      .contains("Trijntje Oosterhuis onherkenbaar veel afgevallen");
   });
 });
 
